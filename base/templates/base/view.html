@@ -1,0 +1,7 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{% for obj in user.accountdetails.all %}
+<p>{{forloop.counter}}-<a href='{{obj.get_absolute_url}}'>{{ obj.website| capfirst}}</a></p>
+{% endfor %}
+{% endblock %}

@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div>
+<form method="post">
+    {% csrf_token %}
+    <label for="website">Website:</label>
+    <input type="text" id="website" name="website" value="{{ account.website }}"><br>
+
+    <label for="username">Username:</label>
+    <input type="text" id="username" name="username" value="{{ account.username }}"><br>
+
+    <label for="password">Password:</label>
+    <input type="text" id="password" name="password" value="{{ account.password }}"><br>
+
+    <label for="info">Info:</label>
+    <textarea id="info" name="info">{{ account.description }}</textarea><br>
+
+    <input type="submit" value="Save">
+</form>
+
+</div>
+
+{% endblock %}

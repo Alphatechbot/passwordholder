@@ -1,0 +1,21 @@
+{% load static %}
+<html>
+<head>
+    <link rel="stylesheet" href="{% static 'styles/main.css' %}" />
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <title>Home</title>
+</head>
+<body>
+<h1>PASSWORD HOLDER</h1>
+<p> Securely store and manage all your passwords with ease. Never forget a password again!</p>
+<ul>
+
+<li><a href="{% url 'login:register' %}">Register</a></li>
+
+<li><a href="{% url 'login:login' %}">Login</a></li>
+
+</ul>
+
+
+</body>
+</html>

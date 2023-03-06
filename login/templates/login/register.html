@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+  <head>
+      <link rel="stylesheet" href="{% static 'styles/main.css' %}" />
+    <meta charset="utf-8">
+    <title>Registration Form</title>
+  </head>
+  <body>
+  <p><a href="{% url 'base:index' %}">BACK</a></p>
+  <div class="container">
+       {% if messages %}
+    <ul class = "messages">
+        {% for message in messages %}
+        <li>{{ message }}</li>
+        {% endfor %}
+    </ul>
+      {% endif %}
+      <h1>Registration Form</h1>
+        <form method="post" action = "" class="form-group" >
+            {% csrf_token %}
+            {% for field in form %}
+            <div class="form-group">
+                <label for ='register'>{{field.label}}</label>
+                 {{field}}
+            </div>
+                {% endfor %}
+        <input type="submit" value="Register">
+          <p>Already have an account? <a href="{% url 'login:login' %}">Login here</a></p>
+        </form>
+
+</div>
+  </body>
+</html>
+
+
+
+

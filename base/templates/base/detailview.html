@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% block content %}
+<h3> Website:{{ objects.website | capfirst}}</h3>
+<p> Username:{{ objects.username | capfirst}}</p>
+<p> Password:{{ objects.password | capfirst}}</p>
+{% if objects.description %}
+<p> Description:{{ objects.description | capfirst}}</p>
+{% endif %}
+<p><a href={{objects.get_absolute_url1}}>Delete Account</a></p>
+<p><a href={{objects.get_absolute_url2}}>Update Account</a></p>
+{% endblock %}
