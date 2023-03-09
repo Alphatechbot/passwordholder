@@ -2,7 +2,7 @@
 {% block content %}
 <h3> Website:{{ objects.website | capfirst}}</h3>
 <p> Username:{{ objects.username | capfirst}}</p>
-<p> Password:{{ objects.password | capfirst}}</p>
+<p> Password:{{ password | capfirst}}</p>
 {% if objects.description %}
 <p> Description:{{ objects.description | capfirst}}</p>
 {% endif %}

@@ -1,6 +1,8 @@
 from django.shortcuts import render, redirect
 from .models import AccountDetails
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.hashers import make_password
+from cryptography.fernet import Fernet
 from login.models import User
 
 
@@ -21,9 +23,8 @@ def addaccount(request):
         password = request.POST.get('password')
         info = request.POST.get('info')
 
-        account = AccountDetails(website=website, username=username, password=password, description=info,
-                                 user=request.user)
-        account.save()
+        AccountDetails.objects.create(website=website, username=username, password=password, description=info,
+                                      user=request.user)
         return redirect('base:view')
     return render(request, 'base/create.html')
 
@@ -41,8 +42,10 @@ def view(request):
 def detailview(request, id):
     objects = AccountDetails.objects.get(id=id)
     if objects in request.user.accountdetails.all():
+        password = objects.get_password()
         context = {
-            'objects': objects
+            'objects': objects,
+            'password':password
         }
 
     else:
